@@ -4,3 +4,4 @@ package com.example.klader.Command;
 public interface Command {
     void execute();
 }
+

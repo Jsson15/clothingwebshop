@@ -1,35 +1,29 @@
 package com.example.klader;
 
-public class ClothingItem {
-    private String name;
-    private String type;
-    private String size;
-    private String material;
-    private String color;
-    private String fit;
-    private String length;
-    private String pattern;
-    private String specific;
+public abstract class ClothingItem {
+    protected String id;
+    protected String name;
+    protected String size;
+    protected double price;
+    protected String material;
+    protected String color;
 
-    public ClothingItem(String name, String type, String size, String material, String color, String fit, String length, String pattern, String specific) {
-        this.name = name;
-        this.type = type;
-        this.size = size;
-        this.material = material;
-        this.color = color;
-        this.fit = fit;
-        this.length = length;
-        this.pattern = pattern;
-        this.specific = specific;
-    }
+    // Getters och setters för gemensamma attribut
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    // Method to create a ClothingItem object from a ClothingItemBuilder
-    public static ClothingItem buildFromBuilder(ClothingItemBuilder builder) {
-        return new ClothingItem(builder.name, builder.type, builder.size, builder.material, builder.color, builder.fit, builder.length, builder.pattern, builder.specific);
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    @Override
-    public String toString() {
-        return "Klädesplagg: " + type + ", Storlek: " + size + ", Material: " + material + ", Färg: " + color + ", Passform: " + fit + ", Längd: " + length + ", Mönster: " + pattern + ", Specifik: " + specific;
-    }
+    public String getSize() { return size; }
+    public void setSize(String size) { this.size = size; }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+
+    public String getMaterial() { return material; }
+    public void setMaterial(String material) { this.material = material; }
+
+    public String getColor() { return color; }
+    public void setColor(String color) { this.color = color; }
 }

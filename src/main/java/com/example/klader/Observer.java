@@ -1,7 +1,6 @@
 package com.example.klader;
 
-// CEOObserver.java
-public interface CEOObserver {
+public interface Observer {
     void update(String message);
 }
 

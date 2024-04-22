@@ -1,29 +1,20 @@
 package com.example.klader;
 
-// CEO.java
-public class CEO {
-    private int id;
+public class CEO implements Observer {
+    private String id;
     private String name;
 
-    public CEO(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    public CEO() {}
 
-    // Getters and setters
-    public int getId() {
-        return id;
-    }
+    // getters and setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public void update(String message) {
+        System.out.println("CEO notified: " + message);
     }
 }
