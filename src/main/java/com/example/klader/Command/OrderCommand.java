@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class OrderCommand implements Command {
+public class OrderCommand {
     private AtomicInteger totalClothesToManufacture;
     private List<ClothingItem> clothesToManufacture;
     private TextField nameField;
@@ -43,7 +43,7 @@ public class OrderCommand implements Command {
         this.eventManager = eventManager;
     }
 
-    @Override
+
     public void execute() {
         totalClothesToManufacture.incrementAndGet();
         ClothingItem item = createClothingItem();

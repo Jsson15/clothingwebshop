@@ -1,12 +1,18 @@
 package com.example.klader;
 
-
 import java.util.Scanner;
 
 public class ClothingOrderApp {
     private static Scanner scanner = new Scanner(System.in);
+    private static EventManager eventManager = new EventManager();
 
     public static void main(String[] args) {
+        // Skapa och registrera CEO som observer
+        CEO ceo = new CEO();
+        ceo.setId("CEO1");  // Exempel ID
+        ceo.setName("John Doe");  // Exempelnamn
+        eventManager.subscribe(ceo);
+
         System.out.println("Welcome to the Clothing Order App!");
         while (true) {
             System.out.println("Which type of clothing do you want to order? (Pants, TShirt, Skirt, Exit)");
@@ -16,6 +22,8 @@ public class ClothingOrderApp {
             ClothingItem item = handleOrder(type);
             if (item != null) {
                 printReceipt(item);  // Skriver ut kvitto efter att beställningen är klar
+                // Notifiera CEO via EventManager när en order är klar
+                eventManager.notifyObservers("Order for " + item.getClass().getSimpleName() + " completed. Details: Size=" + item.getSize() + ", Material=" + item.getMaterial() + ", Color=" + item.getColor());
             } else {
                 System.out.println("Invalid clothing type.");
             }
