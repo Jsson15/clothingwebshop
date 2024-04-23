@@ -1,5 +1,6 @@
 package com.example.klader;
 
+import com.example.klader.Command.OrderCommand;
 import java.util.Scanner;
 
 public class ClothingOrderApp {
@@ -35,31 +36,36 @@ public class ClothingOrderApp {
         String size = scanner.nextLine();
         System.out.println("Enter material (specific options based on type):");
         String material = scanner.nextLine();
-        System.out.println("Enter color (Red, Blue):");
+        System.out.println("Enter color (specific options based on your preference):");
         String color = scanner.nextLine();
 
+        String fit = "", length = "", sleeves = "", neck = "", waistline = "", pattern = "";
         switch (type.toLowerCase()) {
             case "pants":
                 System.out.println("Enter fit (Slim, Regular):");
-                String fit = scanner.nextLine();
+                fit = scanner.nextLine();
                 System.out.println("Enter length (Short, Regular, Long):");
-                String length = scanner.nextLine();
-                return new PantsBuilder().setSize(size).setMaterial(material).setColor(color).setFit(fit).setLength(length).build();
+                length = scanner.nextLine();
+                break;
             case "tshirt":
                 System.out.println("Enter sleeves (Short, Long):");
-                String sleeves = scanner.nextLine();
+                sleeves = scanner.nextLine();
                 System.out.println("Enter neck (V-neck, Crew neck):");
-                String neck = scanner.nextLine();
-                return new TShirtBuilder().setSize(size).setMaterial(material).setColor(color).setSleeves(sleeves).setNeck(neck).build();
+                neck = scanner.nextLine();
+                break;
             case "skirt":
                 System.out.println("Enter waistline (High, Low):");
-                String waistline = scanner.nextLine();
+                waistline = scanner.nextLine();
                 System.out.println("Enter pattern (Solid, Striped):");
-                String pattern = scanner.nextLine();
-                return new SkirtBuilder().setSize(size).setMaterial(material).setColor(color).setWaistline(waistline).setPattern(pattern).build();
+                pattern = scanner.nextLine();
+                break;
             default:
+                System.out.println("Invalid clothing type.");
                 return null;
         }
+
+        OrderCommand orderCommand = new OrderCommand(type, size, material, color, fit, length, sleeves, neck, waistline, pattern, eventManager);
+        return orderCommand.execute();
     }
 
     private static void printReceipt(ClothingItem item) {

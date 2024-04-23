@@ -6,7 +6,6 @@ public class CEO implements Observer {
 
     public CEO() {}
 
-    // getters and setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
@@ -15,6 +14,20 @@ public class CEO implements Observer {
 
     @Override
     public void update(String message) {
-        System.out.println("CEO notified: " + message);
+        if (message.contains("tillverkas")) {
+            handleManufacturingNotification(message);
+        } else if (message.contains("klar")) {
+            handleCompletionNotification(message);
+        } else {
+            System.out.println("CEO notified: " + message);
+        }
+    }
+
+    private void handleManufacturingNotification(String message) {
+        System.out.println("CEO Alert - Manufacturing Start: " + message);
+    }
+
+    private void handleCompletionNotification(String message) {
+        System.out.println("CEO Alert - Manufacturing Complete: " + message);
     }
 }
