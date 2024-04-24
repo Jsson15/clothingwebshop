@@ -1,6 +1,6 @@
 package com.example.klader.Command;
 
-import com.example.klader.ClothingItem;
+import com.example.klader.Clothing.ClothingItem;
 
 public class CreateClothingCommand {
     private ClothingItem item;

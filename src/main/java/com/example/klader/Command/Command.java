@@ -1,9 +1,9 @@
 package com.example.klader.Command;
 
-import com.example.klader.ClothingItem;
+import com.example.klader.Clothing.ClothingItem;
 
 // Command interface
 public interface Command {
-    void execute(ClothingItem item);
+    ClothingItem decorate(ClothingItem clothing);
 }
 
