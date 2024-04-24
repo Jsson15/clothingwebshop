@@ -18,7 +18,7 @@ public class Pants extends ClothingItem {
                 "Color: " + getColor() + "\n" +
                 "Fit: " + getFit() + "\n" +
                 "Length: " + getLength() + "\n" +
-                "Price: " + getPrice() + "\n");
+                "Price: " + getPrice() + ":-\n");
     }
 
     public String getFit() {

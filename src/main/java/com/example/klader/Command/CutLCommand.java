@@ -5,17 +5,18 @@ import com.example.klader.Clothing.Pants;
 import com.example.klader.Clothing.Skirt;
 import com.example.klader.Clothing.TShirt;
 
-public class SewOption2Command implements Command{
+public class CutLCommand implements  Command{
     @Override
     public ClothingItem decorate(ClothingItem clothing) {
         if (clothing instanceof Skirt) {
-            ((Skirt) clothing).setWaist("Low waist");
+            ((Skirt) clothing).setPattern("Long");
         } else if (clothing instanceof Pants) {
-            ((Pants) clothing).setFit("Regular fit");
+            ((Pants) clothing).setLength("Long");
         } else {
-            ((TShirt) clothing).setNeck("U-neck");
+            ((TShirt) clothing).setSleeves("Long");
         }
-        System.out.println("Details for "+clothing.getClass().getSimpleName()+" has been sewn");
+        System.out.println("Details for "+clothing.getClass().getSimpleName()+" has been cut");
         return clothing;
     }
 }
+

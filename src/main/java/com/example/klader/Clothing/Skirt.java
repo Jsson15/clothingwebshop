@@ -19,7 +19,7 @@ public class Skirt extends ClothingItem {
                 "Color: " + getColor() + "\n" +
                 "Waist : " + getWaist() + "\n" +
                 "Pattern: " + getPattern() + "\n" +
-                "Price: " + getPrice() + "\n");
+                "Price: " + getPrice() + ":-\n");
     }
 
     public String getWaist() {

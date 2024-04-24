@@ -28,11 +28,11 @@ public class TShirtBuilder implements ClothingBuilder {
 
     @Override
     public TShirt build() {
-        if (!clothing.getSize().equalsIgnoreCase("s") && !clothing.getSize().equalsIgnoreCase("l")) {
+        if (!clothing.getSize().equalsIgnoreCase("M") && !clothing.getSize().equalsIgnoreCase("L")) {
             throw new RuntimeException("Missing correct size");
-        } else if (!clothing.getMaterial().equalsIgnoreCase("linnen") && !clothing.getMaterial().equalsIgnoreCase("cotton")) {
+        } else if (!clothing.getMaterial().equalsIgnoreCase("Siden") && !clothing.getMaterial().equalsIgnoreCase("Cotton")) {
             throw new RuntimeException("Missing correct material");
-        } else if (!clothing.getColor().equalsIgnoreCase("green") && !clothing.getColor().equalsIgnoreCase("beige")) {
+        } else if (!clothing.getColor().equalsIgnoreCase("Grey") && !clothing.getColor().equalsIgnoreCase("White")) {
             throw new RuntimeException("Missing correct color");
         } else {
             getClothing().setId(idCount.incrementAndGet());

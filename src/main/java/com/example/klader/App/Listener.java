@@ -24,7 +24,7 @@ public class Listener {
     public void setBuilding(String creatingClothes) {
         String oldValue = this.creatingClothes;
         this.creatingClothes = creatingClothes;
-        this.propertyChangeSupport.firePropertyChange("BuildingClothes", oldValue, this.creatingClothes);
+        this.propertyChangeSupport.firePropertyChange("ClothingBuilder", oldValue, this.creatingClothes);
     }
 
     public void setDecorating(String decoratingClothes) {

@@ -82,7 +82,7 @@ public class Menu {
     public void case2() {
         System.out.println("Designing TShirt");
 
-        TShirtBuilder shirtBuilder = (TShirtBuilder) builderDesign(new TShirtBuilder());
+        TShirtBuilder shirtBuilder = (TShirtBuilder) builderDesignTshirt(new TShirtBuilder());
         CommandPipeline commandPipeline = new CommandPipeline();
         commandPipeline.setClothing(shirtBuilder.getClothing());
         commandDesign(shirtBuilder, commandPipeline);
@@ -113,8 +113,8 @@ public class Menu {
 
         System.out.println("\nChoose size M or L ");
         String size = scanner.nextLine();
-        while (!size.equalsIgnoreCase("s") && !size.equalsIgnoreCase("l")) {
-            System.out.println("Size not available, choose s or l");
+        while (!size.equalsIgnoreCase("M") && !size.equalsIgnoreCase("L")) {
+            System.out.println("Size not available, choose M or L");
             size = scanner.nextLine();
         }
         clothingBuilder.addSize(size);
@@ -123,6 +123,36 @@ public class Menu {
         String color = scanner.nextLine();
         while (!color.equalsIgnoreCase("Black") && !color.equalsIgnoreCase("Blue")) {
             System.out.println("Color not available, choose Black or Blue");
+            color = scanner.nextLine();
+        }
+        clothingBuilder.addColor(color);
+        return clothingBuilder;
+    }
+
+
+    private ClothingBuilder builderDesignTshirt(ClothingBuilder clothingBuilder) {
+
+        System.out.println("\nChoose material, Siden or Cotton");
+        String material = scanner.nextLine();
+        while (!material.equalsIgnoreCase("Siden") && !material.equalsIgnoreCase("Cotton")) {
+            System.out.println("Material not available, choose Siden or Cotton");
+            material = scanner.nextLine();
+        }
+        clothingBuilder.addMaterial(material);
+
+
+        System.out.println("\nChoose size M or L ");
+        String size = scanner.nextLine();
+        while (!size.equalsIgnoreCase("M") && !size.equalsIgnoreCase("L")) {
+            System.out.println("Size not available, choose M or L");
+            size = scanner.nextLine();
+        }
+        clothingBuilder.addSize(size);
+
+        System.out.println("\nChoose color, Grey or White");
+        String color = scanner.nextLine();
+        while (!color.equalsIgnoreCase("Grey") && !color.equalsIgnoreCase("White")) {
+            System.out.println("Color not available, choose Grey or White");
             color = scanner.nextLine();
         }
         clothingBuilder.addColor(color);
@@ -140,17 +170,17 @@ public class Menu {
         if (clothingBuilder.getClothing().getClass().getSimpleName().equalsIgnoreCase("Pants")) {
             cut = "length";
             cutShort = "Short";
-            cutMedium = "Capri";
+            cutMedium = "Mid";
             cutLong = "Long";
         } else if (clothingBuilder.getClothing().getClass().getSimpleName().equalsIgnoreCase("TShirt")) {
             cut = "sleeve";
             cutShort = "Short";
-            cutMedium = "Bracelet sleeve";
+            cutMedium = "Mid";
             cutLong = "Long";
         } else if (clothingBuilder.getClothing().getClass().getSimpleName().equalsIgnoreCase("Skirt")) {
             cut = "length";
             cutShort = "Short";
-            cutMedium = "Midi";
+            cutMedium = "Mid";
             cutLong = "Long";
         }
 
@@ -162,11 +192,11 @@ public class Menu {
             answerCut = scanner.nextLine();
         }
         if (answerCut.equalsIgnoreCase("1")) {
-            decoratorPipeline.addCommand(new CutShortCommand());
+            decoratorPipeline.addCommand(new CutSCommand());
         } else if (answerCut.equalsIgnoreCase("2")) {
-            decoratorPipeline.addCommand(new CutMediumCommand());
+            decoratorPipeline.addCommand(new CutMCommand());
         } else {
-            decoratorPipeline.addCommand(new CutLongCommand());
+            decoratorPipeline.addCommand(new CutLCommand());
         }
 
         String sew = "";
@@ -198,25 +228,25 @@ public class Menu {
             answerSew = scanner.nextLine();
         }
         if (answerSew.equals("1")) {
-            decoratorPipeline.addCommand(new SewOption1Command());
+            decoratorPipeline.addCommand(new Sew1Command());
         } else if (answerSew.equals("2")) {
-            decoratorPipeline.addCommand(new SewOption2Command());
+            decoratorPipeline.addCommand(new Sew2Command());
         } else {
-            decoratorPipeline.addCommand(new SewOption3Command());
+            decoratorPipeline.addCommand(new Sew3Command());
         }
 
     }
 
     private void addToCart(ClothingBuilder clothingBuilder, CommandPipeline commandPipeline) {
-        System.out.println("Add " + clothingBuilder.getClothing().getClass().getSimpleName() + " " + clothingBuilder.getClothing().getPrice() + "§ to your shopping cart?");
+        System.out.println("Add " + clothingBuilder.getClothing().getClass().getSimpleName() + " " + clothingBuilder.getClothing().getPrice() + ":- SEK to your shopping cart?  (y/n)");
 
         String answer = scanner.nextLine();
 
-        while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
-            System.out.println("enter yes or no");
+        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+            System.out.println("enter y or n");
             answer = scanner.nextLine();
         }
-        if (answer.equalsIgnoreCase("yes")) {
+        if (answer.equalsIgnoreCase("y")) {
             OrderService.getInstance().addProduct(clothingBuilder);       //Lägger till clothesBuilder till orderservice
             OrderService.getInstance().addPipeLine(commandPipeline);  //lägger till pipeline med commands till orderServicen
             System.out.println(clothingBuilder.getClothing().getClass().getSimpleName() + " added to your cart");
@@ -232,20 +262,20 @@ public class Menu {
             System.out.println("You have no items in your shopping-cart. Please add an item to place an order");
         } else {
             System.out.println("Your order: ");
-            System.out.println(OrderService.getInstance().getOrder() + ". Total: " + OrderService.getInstance().getSum() + "§");
+            System.out.println(OrderService.getInstance().getOrder() + ". Total: " + OrderService.getInstance().getSum() + ":- SEK");
 
-            System.out.println("Do you want to buy these items?");
+            System.out.println("Do you want to buy these items? (y/n)");
             String answer = scanner.nextLine();
 
-            while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
-                System.out.println("Answer yes or no");
+            while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+                System.out.println("Answer y or n");
                 answer = scanner.nextLine();
             }
-            if (answer.equalsIgnoreCase("yes")) {
+            if (answer.equalsIgnoreCase("y")) {
                 Listener listener = new Listener();
                 listener.addPropertyChangeListener(CEO.getInstance());
                 System.out.println("placing order for purchase \n");
-                listener.setBuilding(OrderService.getInstance().getOrder()); //skickar iväg vad som beställts till CEO
+                listener.setBuilding(OrderService.getInstance().getOrder());
                 OrderService.getInstance().execute();
 
                 System.out.println("\nReceipt for " + customer.getName());
@@ -253,13 +283,13 @@ public class Menu {
                     clothing.getDetails();
 
                 }
-                System.out.println("Total sum " + OrderService.getInstance().getSum() + "§");
-                OrderService.getInstance().emptyOrderService(); //tömmer lista med pipelines, builders och clothes
+                System.out.println("Total " + OrderService.getInstance().getSum() + ":- SEK");
+                OrderService.getInstance().emptyOrderService();
             }
 
             System.out.println("\nDo you wish to exit the shop");
             String continueAnswer = scanner.nextLine();
-            if (continueAnswer.equalsIgnoreCase("yes")) {
+            if (continueAnswer.equalsIgnoreCase("y")) {
                 shopping = false;
             } else System.out.println("Ready to place new order");
 

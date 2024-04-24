@@ -18,7 +18,7 @@ public class TShirt extends ClothingItem {
                 "Color: " + getColor() + "\n" +
                 "Neck : " + getNeck() + "\n" +
                 "Sleeves: " + getSleeves() + "\n" +
-                "Price: " + getPrice() + "\n");
+                "Price: " + getPrice() + ":-\n");
     }
 
     public String getSleeves() {

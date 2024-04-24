@@ -5,17 +5,20 @@ import com.example.klader.Clothing.Pants;
 import com.example.klader.Clothing.Skirt;
 import com.example.klader.Clothing.TShirt;
 
-public class SewOption1Command implements Command{
+public class CutMCommand implements Command {
+
     @Override
     public ClothingItem decorate(ClothingItem clothing) {
         if (clothing instanceof Skirt) {
-            ((Skirt) clothing).setWaist("High waist");
+            ((Skirt) clothing).setPattern("Midi");
         } else if (clothing instanceof Pants) {
-            ((Pants) clothing).setFit("Slim fit");
+            ((Pants) clothing).setLength("Capri");
         } else {
-            ((TShirt) clothing).setNeck("V-neck");
+            ((TShirt) clothing).setSleeves("Bracelet sleeves");
         }
-        System.out.println("Details for "+clothing.getClass().getSimpleName()+" has been sewn");
+        System.out.println("Details for " + clothing.getClass().getSimpleName() + " has been cut");
         return clothing;
+
     }
 }
+
