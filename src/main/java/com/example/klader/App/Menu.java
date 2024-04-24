@@ -19,7 +19,7 @@ public class Menu {
 
     public void welcomeMenu() {
         System.out.println("Welcome to ClothesOrderApp");
-        System.out.println("Enter yor name or type \"exit\" to close the shop");
+        System.out.println("Enter yor name or type \"exit\" to close the app");
         String choice = scanner.nextLine();
         if (!choice.equalsIgnoreCase("exit")) {
             customer = new Customer();
@@ -33,10 +33,10 @@ public class Menu {
         while (shopping) {
 
             System.out.println("\nEnter your number of choice");
-            System.out.println("1. Design pants 749 KR");
-            System.out.println("2. Design t-shirt 599 KR");
-            System.out.println("3. Design skirt 249 KR");
-            System.out.println("4. Place order");
+            System.out.println("1. Design a pair of pants: 749:- SEK");
+            System.out.println("2. Design a TShirt: 599:- SEK");
+            System.out.println("3. Design a skirt: 249:- SEK");
+            System.out.println("4. Place an order");
             System.out.println("5. Exit");
 
             String choice = scanner.nextLine();
