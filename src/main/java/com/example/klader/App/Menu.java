@@ -32,7 +32,7 @@ public class Menu {
 
         while (shopping) {
 
-            System.out.println("\nEnter your number of choice");
+            System.out.println("\nEnter a number of the clothing you want to design");
             System.out.println("1. Design a pair of pants: 749:- SEK");
             System.out.println("2. Design a TShirt: 599:- SEK");
             System.out.println("3. Design a skirt: 249:- SEK");
@@ -184,7 +184,7 @@ public class Menu {
             cutLong = "Long";
         }
 
-        System.out.println("\nChoose " + cut + " for " + typeOfClothing + " 1. " + cutShort + ", 2. " + cutMedium + " or 3. " + cutLong);
+        System.out.println("\nEnter a number of the " + cut + " you want for your " + typeOfClothing + " 1. " + cutShort + ", 2. " + cutMedium + " or 3. " + cutLong);
         String answerCut = scanner.nextLine();
 
         while (!answerCut.equalsIgnoreCase("1") && !answerCut.equalsIgnoreCase("2") && !answerCut.equalsIgnoreCase("3")) {
@@ -220,7 +220,7 @@ public class Menu {
             sew3 = "Mid";
         }
 
-        System.out.println("\nChoose type of " + sew + " for " + typeOfClothing + " 1. " + sew1 + ", 2. " + sew2 + " or 3. " + sew3);
+        System.out.println("\nEnter a number of the " + sew + " you want for your " + typeOfClothing + " 1. " + sew1 + ", 2. " + sew2 + " or 3. " + sew3);
         String answerSew = scanner.nextLine();
 
         while (!answerSew.equals("1") && !answerSew.equals("2") && !answerSew.equals("3")) {
@@ -238,7 +238,7 @@ public class Menu {
     }
 
     private void addToCart(ClothingBuilder clothingBuilder, CommandPipeline commandPipeline) {
-        System.out.println("Add " + clothingBuilder.getClothing().getClass().getSimpleName() + " " + clothingBuilder.getClothing().getPrice() + ":- SEK to your shopping cart?  (y/n)");
+        System.out.println("Add " + clothingBuilder.getClothing().getClass().getSimpleName() + " for " + clothingBuilder.getClothing().getPrice() + ":- SEK to your shopping cart?  (y/n)");
 
         String answer = scanner.nextLine();
 
@@ -259,7 +259,7 @@ public class Menu {
     private void placeOrder() {
 
         if (OrderService.getInstance().getSum() == 0) {
-            System.out.println("You have no items in your shopping-cart. Please add an item to place an order");
+            System.out.println("You have no items in your cart. Please add an item to place an order");
         } else {
             System.out.println("Your order: ");
             System.out.println(OrderService.getInstance().getOrder() + ". Total: " + OrderService.getInstance().getSum() + ":- SEK");
@@ -287,7 +287,7 @@ public class Menu {
                 OrderService.getInstance().emptyOrderService();
             }
 
-            System.out.println("\nDo you wish to exit the shop");
+            System.out.println("\nDo you wish to exit the app");
             String continueAnswer = scanner.nextLine();
             if (continueAnswer.equalsIgnoreCase("y")) {
                 shopping = false;

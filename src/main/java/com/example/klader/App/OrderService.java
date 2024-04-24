@@ -9,9 +9,9 @@ import java.util.List;
 
 public class OrderService {
 
-    private List<ClothingBuilder> builders = new ArrayList<>(); //Lista med builders för att ha allt ifrån de innan plaggen är beställda och skapandet börjas
-    private List<CommandPipeline> pipelines = new ArrayList<>(); //Lista med pipelines för att köra och dekorera kläderna efter beställningen lagts
-    private List<ClothingItem> clothes = new ArrayList<>(); // Lista med kläder som skapas när ordern är lagd och kläderna är tillverkade. Används för kvittot
+    private List<ClothingBuilder> builders = new ArrayList<>(); //builder lista
+    private List<CommandPipeline> pipelines = new ArrayList<>(); //pipeline lista
+    private List<ClothingItem> clothes = new ArrayList<>(); // klädeslista
     private static OrderService orderService = null;
 
     private OrderService() {
@@ -39,7 +39,7 @@ public class OrderService {
         }
 
         for (CommandPipeline pipeline : pipelines) {
-            clothes.add(pipeline.execute());  //lägger till klädesplagget i min lista med kläder samtidigt som jag dekorerar det
+            clothes.add(pipeline.execute());
         }
     }
 

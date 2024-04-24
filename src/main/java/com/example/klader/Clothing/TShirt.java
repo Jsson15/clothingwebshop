@@ -6,7 +6,7 @@ public class TShirt extends ClothingItem {
     private String sleeves;
 
     public TShirt() {
-        setPrice(200);
+        setPrice(599);
         setName("TShirt");
     }
 

@@ -6,8 +6,8 @@ public abstract class ClothingItem extends BusinessObject {
 
     private double price;
     private String size; //M & L
-    private String material; //Jeans & Leather
-    private String color; //Blue & Black
+    private String material; //Jeans & Leather // Siden & Cotton for TShirt
+    private String color; //Blue & Black // Grey & White for TShirt
 
     public ClothingItem() {
     }

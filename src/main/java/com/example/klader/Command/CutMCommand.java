@@ -10,11 +10,11 @@ public class CutMCommand implements Command {
     @Override
     public ClothingItem decorate(ClothingItem clothing) {
         if (clothing instanceof Skirt) {
-            ((Skirt) clothing).setPattern("Midi");
+            ((Skirt) clothing).setPattern("Mid");
         } else if (clothing instanceof Pants) {
-            ((Pants) clothing).setLength("Capri");
+            ((Pants) clothing).setLength("Mid");
         } else {
-            ((TShirt) clothing).setSleeves("Bracelet sleeves");
+            ((TShirt) clothing).setSleeves("Mid");
         }
         System.out.println("Details for " + clothing.getClass().getSimpleName() + " has been cut");
         return clothing;
