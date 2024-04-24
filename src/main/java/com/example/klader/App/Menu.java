@@ -18,21 +18,21 @@ public class Menu {
     private boolean shopping = true;
 
     public void welcomeMenu() {
-        System.out.println("Welcome to Wigells Clothes on command");
+        System.out.println("Welcome to ClothesOrderApp");
         System.out.println("Enter yor name or type \"exit\" to close the shop");
         String choice = scanner.nextLine();
         if (!choice.equalsIgnoreCase("exit")) {
             customer = new Customer();
             customer.setName(choice);
             menu();
-        } else System.out.println("Closing shop");
+        } else System.out.println("Closing App");
     }
 
     public void menu() {
 
         while (shopping) {
 
-            System.out.println("\nEnter your choice");
+            System.out.println("\nEnter your number of choice");
             System.out.println("1. Design pants 749 KR");
             System.out.println("2. Design t-shirt 599 KR");
             System.out.println("3. Design skirt 249 KR");
@@ -80,7 +80,7 @@ public class Menu {
     }
 
     public void case2() {
-        System.out.println("Designing T-Shirt");
+        System.out.println("Designing TShirt");
 
         TShirtBuilder shirtBuilder = (TShirtBuilder) builderDesign(new TShirtBuilder());
         CommandPipeline commandPipeline = new CommandPipeline();
@@ -102,16 +102,16 @@ public class Menu {
 
     private ClothingBuilder builderDesign(ClothingBuilder clothingBuilder) {
 
-        System.out.println("\nChoose material, cotton or linnen");
+        System.out.println("\nChoose material, Jeans or Leather");
         String material = scanner.nextLine();
-        while (!material.equalsIgnoreCase("cotton") && !material.equalsIgnoreCase("linnen")) {
-            System.out.println("Material not available, choose cotton or linnen");
+        while (!material.equalsIgnoreCase("Jeans") && !material.equalsIgnoreCase("Leather")) {
+            System.out.println("Material not available, choose Jeans or Leather");
             material = scanner.nextLine();
         }
         clothingBuilder.addMaterial(material);
 
 
-        System.out.println("\nChoose size s or l ");
+        System.out.println("\nChoose size M or L ");
         String size = scanner.nextLine();
         while (!size.equalsIgnoreCase("s") && !size.equalsIgnoreCase("l")) {
             System.out.println("Size not available, choose s or l");
@@ -119,10 +119,10 @@ public class Menu {
         }
         clothingBuilder.addSize(size);
 
-        System.out.println("\nChoose color, green or beige");
+        System.out.println("\nChoose color, Black or Blue");
         String color = scanner.nextLine();
-        while (!color.equalsIgnoreCase("green") && !color.equalsIgnoreCase("beige")) {
-            System.out.println("Color not available, choose green or beige");
+        while (!color.equalsIgnoreCase("Black") && !color.equalsIgnoreCase("Blue")) {
+            System.out.println("Color not available, choose Black or Blue");
             color = scanner.nextLine();
         }
         clothingBuilder.addColor(color);

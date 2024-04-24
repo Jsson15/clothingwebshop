@@ -9,7 +9,7 @@ public class SewOption3Command implements Command {
     @Override
     public ClothingItem decorate(ClothingItem clothing) {
         if (clothing instanceof Skirt) {
-            ((Skirt) clothing).setWaist("Pull on");
+            ((Skirt) clothing).setWaist("Mid on");
         } else if (clothing instanceof Pants) {
             ((Pants) clothing).setFit("Loose fit");
         } else {
